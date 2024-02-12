@@ -21,9 +21,40 @@ function populateHistoricRecord() {
   var numSWR = sheetProjections.getRange('C18').getValue();
   var numHVPerc = sheetProjections.getRange('C22').getValue();
   var numQtrPerChg = sheetSummary.getRange('D8').getValue();
-  var recQuarter = sheetSummary.getRange('E6').getValue();
-  
-  sheetHistoricData.appendRow([dateRecord,numNetworth,numNetworhExHV,numFIRE,numFIREIncome,numCurrComExp,numCurrComSurv,numAvgReturns,numYearsFIRE,numAnnSavRate,numSavRateMean,numSavRateGross,numSavRateNet,numSWR,numHVPerc,numQtrPerChg,recQuarter]);
+  //var recQuarter = sheetSummary.getRange('E6').getValue();
+
+  var year = dateRecord.split("/")[2]
+  function genQuar(){
+
+    var month = Number(dateRecord.split("/")[0])
+    console.log(month)
+
+    switch(month){
+        case 1:
+        case 2:
+        case 3:
+            return "Q1"
+        case 4:
+        case 5:
+        case 6:
+            return "Q2"
+        case 7:
+        case 8:
+        case 9:
+            return "Q3"
+        case 10:
+        case 11:
+        case 12:
+            return "Q4"
+        default:
+            return "Q?"
+    }
+
+}
+
+var recQuarterGen = (`${year} - ${genQuar()}`)
+
+  sheetHistoricData.appendRow([dateRecord,numNetworth,numNetworhExHV,numFIRE,numFIREIncome,numCurrComExp,numCurrComSurv,numAvgReturns,numYearsFIRE,numAnnSavRate,numSavRateMean,numSavRateGross,numSavRateNet,numSWR,numHVPerc,numQtrPerChg,recQuarterGen]);
 
   var range = sheetHistoricData;
   range.sort(1, false);
