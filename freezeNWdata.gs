@@ -14,7 +14,7 @@ function freezeNWdata() {
   var setCellPerHomVeh = sheetNWdata.getRange(3,9)
   var setCellLastUpdated = sheetNWdata.getRange(3,4)
 
-  if (month === 1 || month === 6 || month === 9 || month === 12){
+  if (month === 3 || month === 6 || month === 9 || month === 12){
       setCellNetworth.setValue(netWorth)
       setCellNetworthExHV.setValue(netWorthExHV)
       setCellPerHomVeh.setValue(percHomVeh)
